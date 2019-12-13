@@ -902,7 +902,7 @@ MonoBehaviour:
   moveRightKey: 100
   speed: 5
   tf: {fileID: 0}
-  jumpHeight: 350
+  jumpHeight: 500
   jumpSpeed: 50
   text: {fileID: 0}
   swapMenu: {fileID: 1150861201}
@@ -994,7 +994,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 3, y: 4.5}
   m_EdgeRadius: 0
 --- !u!50 &324993211
 Rigidbody2D:

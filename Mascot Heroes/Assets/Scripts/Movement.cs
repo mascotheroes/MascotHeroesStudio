@@ -110,6 +110,7 @@ public class Movement : MonoBehaviour {
     {
         if (isGrounded)
         {
+            isGrounded = false;
             //StartCoroutine ("Jump");
             rb.AddForce(tf.up * jumpHeight);
         }
