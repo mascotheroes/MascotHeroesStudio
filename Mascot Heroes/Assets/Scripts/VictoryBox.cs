@@ -21,7 +21,7 @@ public class VictoryBox : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        LeadScene(sceneToLoad);
+        LoadScene(sceneToLoad);
     }
 
     public void LoadScene(int sceneNum)
