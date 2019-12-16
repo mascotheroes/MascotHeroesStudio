@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Patrol
 {
-    [SerializeField] List<Transform> patrolNodes;
+    [SerializeField] public List<Transform> patrolNodes;
 
     public enum PatrolType
     {
@@ -18,13 +18,18 @@ public class Patrol
     "False = Goes through in reverse order")]
     public bool Direction = true;
 
-    [SerializeField] float closeEnoughDistance;
+    [Tooltip("How Close the contoller needs to be to move to the next patroll Node")]
+    [SerializeField] [Min(.1f)]float closeEnoughDistance = .3f;
 
     public Transform currentNode
     {
         get
         {
-            return patrolNodes[currentNodeIndex];
+            if(patrolNodes.Count > 0)
+            {
+                return patrolNodes[currentNodeIndex];
+            }
+            return null;
         }
         //private set
         //{
@@ -81,10 +86,8 @@ public class Patrol
         }
         else
         {
-            
             if (currentNodeIndex <= 0)
             {
-                Debug.Log("currentNodeIndex <= 0");
                 if (patrolType == PatrolType.Loop)
                 {
                     currentNodeIndex = patrolNodes.Count-1;
@@ -97,7 +100,6 @@ public class Patrol
                 }
             }
             currentNodeIndex--;
-
         }
     }
 
