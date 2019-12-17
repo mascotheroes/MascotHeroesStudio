@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour {
 			i++;
 			yield return null;
 		}
-		StopCoroutine ("Jump");
+		//StopCoroutine ("Jump");
 	}
 
 	public void OnCollisionEnter2D(Collision2D other){
@@ -110,6 +110,7 @@ public class Movement : MonoBehaviour {
     {
         if (isGrounded)
         {
+            Debug.Log("JUmp");
             isGrounded = false;
             //StartCoroutine ("Jump");
             rb.AddForce(tf.up * jumpHeight);

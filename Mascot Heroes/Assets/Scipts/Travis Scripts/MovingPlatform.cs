@@ -11,7 +11,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] float delayAtEndOfPath;
 
     //apparently setting the parent to null reset the position no matter what i do so im doing this for now
-    public Movement player;
+    public Pawn player;
 
     enum PlatformStates
     {
@@ -79,18 +79,18 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Movement m = collision.gameObject.GetComponent<Movement>();
-        if (m != null)
+        Pawn p = collision.gameObject.GetComponent<Pawn>();
+        if (p != null)
         {
             //collision.gameObject.transform.SetParent(gameObject.transform);
-            player = m;
+            player = p;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Movement m = collision.gameObject.GetComponent<Movement>();
-        if (m != null)
+        Pawn p = collision.gameObject.GetComponent<Pawn>();
+        if (p != null)
         {
             player = null;
             //Vector3 pos = collision.gameObject.transform.TransformPoint(collision.transform.position);
