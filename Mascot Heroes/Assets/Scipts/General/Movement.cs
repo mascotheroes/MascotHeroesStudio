@@ -23,6 +23,13 @@ public class Movement : MonoBehaviour {
 	public GameObject swapMenu;
 	private SpriteRenderer sRend;
     private Rigidbody2D rb;
+
+    //May have to delete later
+    //This is the green ui elements that appear to indicate that left and right are being pressed
+    //This refrence will allow these objects to be enabled and disabled if the character moves or stops
+    public GameObject leftMovement;
+    public GameObject rightMovement;
+
 //	public float jumpSwipeRequirement = 100;
 
 	// Use this for initialization
@@ -34,11 +41,19 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (movingRight) {
+        if (movingRight) {
 			MoveRight ();
-		} else if(movingLeft) {
+            rightMovement.gameObject.SetActive(true);
+        } else if(movingLeft) {
 			MoveLeft ();
-		}
+            leftMovement.gameObject.SetActive(true);
+        }
+        else
+        {
+            leftMovement.gameObject.SetActive(false);
+            rightMovement.gameObject.SetActive(false);
+
+        }
 //		if (Input.GetKeyDown (jump)) {
 //			if (isGrounded) {
 //				StartCoroutine ("Jump");
