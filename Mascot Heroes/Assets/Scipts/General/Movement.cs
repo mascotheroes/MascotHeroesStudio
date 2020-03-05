@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,8 @@ public class Movement : MonoBehaviour {
 	public GameObject swapMenu;
 	private SpriteRenderer sRend;
     private Rigidbody2D rb;
+    public AudioClip jumpSound;
+    private AudioSource AudSource;
 
     //May have to delete later
     //This is the green ui elements that appear to indicate that left and right are being pressed
@@ -37,7 +40,8 @@ public class Movement : MonoBehaviour {
 		tf = GetComponent<Transform> ();
 		sRend = GetComponent<SpriteRenderer> ();
         rb = GetComponent<Rigidbody2D>();
-	}
+        AudSource = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -78,16 +82,16 @@ public class Movement : MonoBehaviour {
 		//text.text = ("Current: " + touchOne.position.y +" Last: " + lastTouchOne);
 	}
 
-	private IEnumerator Jump(){
-		isGrounded = false;
-		int i = 0;
-		while(i < jumpHeight){
-			tf.position += tf.up * jumpSpeed * Time.deltaTime;
-			i++;
-			yield return null;
-		}
-		//StopCoroutine ("Jump");
-	}
+	//private IEnumerator Jump(){
+	//	isGrounded = false;
+		//int i = 0;
+		//while(i < jumpHeight){
+		//	tf.position += tf.up * jumpSpeed * Time.deltaTime;
+			//i++;
+			//yield return null;
+		//}
+	//	//StopCoroutine ("Jump");
+//	}
 
 	public void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
@@ -129,6 +133,12 @@ public class Movement : MonoBehaviour {
             isGrounded = false;
             //StartCoroutine ("Jump");
             rb.AddForce(tf.up * jumpHeight);
+            AudSource.PlayOneShot(jumpSound);
         }
+    }
+
+    private void NextFrame()
+    {
+
     }
 }
