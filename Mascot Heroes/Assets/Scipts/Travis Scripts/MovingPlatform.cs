@@ -10,6 +10,9 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float delayAtEndOfPath;
 
+    //apparently setting the parent to null reset the position no matter what i do so im doing this for now
+    public Pawn player;
+
     enum PlatformStates
     {
         Wait,
@@ -39,7 +42,15 @@ public class MovingPlatform : MonoBehaviour
 
     private void Patrol()
     {
-        transform.position = Vector3.MoveTowards(transform.position, patrolPath.currentNode.position, speed * Time.deltaTime);
+        Vector3 movement = Vector3.MoveTowards(transform.position, patrolPath.currentNode.position, speed * Time.deltaTime);
+        
+        if(player != null)
+        {
+           // Debug.Log(movement - transform.position);
+            player.gameObject.transform.position += movement - transform.position;
+        }
+        transform.position = movement;
+
         if (patrolPath.CheckCloseEnough(transform.position))
         {
             if(patrolPath.IsAtEndOfRoute || patrolPath.IsAtBeginningOfRoute)
@@ -64,5 +75,30 @@ public class MovingPlatform : MonoBehaviour
 
         patrolPath.IncrimentPatrolNode();
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Pawn p = collision.gameObject.GetComponent<Pawn>();
+        if (p != null)
+        {
+            //collision.gameObject.transform.SetParent(gameObject.transform);
+            player = p;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Pawn p = collision.gameObject.GetComponent<Pawn>();
+        if (p != null)
+        {
+            player = null;
+            //Vector3 pos = collision.gameObject.transform.TransformPoint(collision.transform.position);
+            //Debug.Log(pos);
+
+            //collision.gameObject.transform.parent = null;
+            //collision.transform.position = pos;
+         
+        }
     }
 }

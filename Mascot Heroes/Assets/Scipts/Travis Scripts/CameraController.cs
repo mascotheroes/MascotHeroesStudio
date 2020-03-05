@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
    
     private void FollowPlayer()
     {
-        transform.position = GameManager.instance.player.pawn.transform.position + offset;
+        //transform.position = GameManager.instance.player.pawn.transform.position + offset;
     }
 
     public void ChangeToFollowPlayer()

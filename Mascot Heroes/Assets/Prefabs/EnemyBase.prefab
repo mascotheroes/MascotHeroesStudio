@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4377223133119805194}
-  - component: {fileID: 4042398891162087816}
+  - component: {fileID: 2552825546373501748}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Transform:
   m_Father: {fileID: 4377223134417978021}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4042398891162087816
+--- !u!114 &2552825546373501748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,11 +71,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4377223133119805195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff5cfe2efc006c4796f54a86101f844, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fc4fbf85b6085e4b87a202ce7d05f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  jumpforce: 10
+  speed: 0
+  jumpforce: 0
 --- !u!1 &4377223134417978019
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a53b37c29fc6c4b83605fad8d03f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 4042398891162087816}
+  pawn: {fileID: 2552825546373501748}
   patrol:
     patrolNodes: []
     patrolType: 0

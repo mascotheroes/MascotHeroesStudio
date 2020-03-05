@@ -11,7 +11,7 @@ public class ControllerSwipeJump : Controller
     public List<Touch> touchesInOrder = new List<Touch>();
     public void Start()
     {
-        GameManager.instance.player = this;   
+        //GameManager.instance.player = this;   
     }
 
     // Update is called once per frame
